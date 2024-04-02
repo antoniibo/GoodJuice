@@ -1,0 +1,27 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #F6F6E9;
+}
+nav{
+    display: flex;
+    justify-content:space-around;
+    background-color: #95964F;
+    color: #F6F6E9;
+}
+nav ul{
+    display: flex;
+    justify-content:center;
+    text-decoration: none;
+}
+main{
+
+}
+footer{
+    background-color: #95964F;
+    color: #F6F6E9;
+}
+footer ul{
+    display: flex;
+    justify-content:space-around;
+}
