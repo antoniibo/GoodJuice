@@ -12,9 +12,9 @@
     <nav>
         <h1>GoodJuice.inc</h1>
         <ul>
-          <li><a href="">Products</a></li>
-          <li><a href="">About Us</a></li>
-          <li><a href="">Contact Us</a></li>
+          <li><a href="#" data-i18n="Prod">Products</a></li>
+          <li><a href="#" data-i18n="AbUs">About Us</a></li>
+          <li><a href="#" data-i18n="ConUs">Contact Us</a></li>
         </ul>
         <div class="social-icons">
           <a href="#" target="_blank">
@@ -30,38 +30,38 @@
         <div class="language-dropdown">
           <button class="lang-btn"><i class="fa-solid fa-caret-right"></i> Eng </button>
           <ul class="lang-options">
-            <li><a href="#">Eng</a></li>
-            <li><a href="#">Укр</a></li>
+            <li><a href="?lang=eng">Eng</a></li>
+            <li><a href="?lang=ua">Укр</a></li>
           </ul>
         </div>
       </nav>
     <main>
         <div id="mainPhoto">
             <img src="../images/main.png" alt="main photo">
-            <p>NEW COLLECTION</p>
+            <p data-i18n="MainPhoto">NEW COLLECTION</p>
         </div>
         <section id="products">
             <ul>
                 <li>
-                    <h3>Apple-Cammomile</h3>
+                    <h3 data-i18n="Apple">Apple-Cammomile</h3>
                     <img src="../images/apple-juice.png" alt="apple juice">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                    <p data-i18n="AppleT">Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
                         Quas expedita illo enim nesciunt, sit itaque nobis consectetur eveniet 
                         eum nihil iure possimus minima blanditiis tempora mollitia in sequi facere quod.
                     </p>
                 </li>
                 <li>
-                    <h3>Orange-Basil</h3>
+                    <h3 data-i18n="Orange">Orange-Basil</h3>
                     <img src="../images/orange-juice.png" alt="orange juice">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                    <p data-i18n="OrangeT">Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
                         Quas expedita illo enim nesciunt, sit itaque nobis consectetur eveniet 
                         eum nihil iure possimus minima blanditiis tempora mollitia in sequi facere quod.
                     </p>
                 </li>
                 <li>
-                    <h3>Watermelon-Mint</h3>
+                    <h3 data-i18n="Watermel">Watermelon-Mint</h3>
                     <img src="../images/watermelon-juice.png" alt="watermelon juice">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                    <p data-i18n="WatermelT">Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
                         Quas expedita illo enim nesciunt, sit itaque nobis consectetur eveniet 
                         eum nihil iure possimus minima blanditiis tempora mollitia in sequi facere quod.
                     </p>
@@ -69,13 +69,13 @@
             </ul>   
         </section>
         <section id="about">
-            <h2>About Us</h2>
+            <h2 data-i18n="AbUs">About Us</h2>
             <ul>
                 <li>
                     <img src="../images/history.png" alt="photo" width="500">
                     <div>
-                        <h3>Our History</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                        <h3 data-i18n="HistoryH">Our History</h3>
+                        <p data-i18n="HistoryT">Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
                             Quas expedita illo enim nesciunt, sit itaque nobis consectetur eveniet 
                             eum nihil iure possimus minima blanditiis tempora mollitia in sequi facere quod.
                         </p>
@@ -83,8 +83,8 @@
                 </li>
                 <li>
                     <div>
-                        <h3>Processes</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                        <h3 data-i18n="ProcessesH">Processes</h3>
+                        <p data-i18n="ProcessesT">Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
                             Quas expedita illo enim nesciunt, sit itaque nobis consectetur eveniet 
                             eum nihil iure possimus minima blanditiis tempora mollitia in sequi facere quod.
                         </p>
@@ -94,8 +94,8 @@
                 <li>
                     <img src="../images/team.jpg" alt="photo" width="500">
                     <div>
-                        <h3>Our Team</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                        <h3 data-i18n="TeamH">Our Team</h3>
+                        <p data-i18n="TeamT">Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
                             Quas expedita illo enim nesciunt, sit itaque nobis consectetur eveniet 
                             eum nihil iure possimus minima blanditiis tempora mollitia in sequi facere quod.
                         </p>
@@ -104,7 +104,7 @@
             </ul>
         </section>
         <section id="contact">
-            <h2>Contact Us</h2>
+            <h2 data-i18n="ConUs">Contact Us</h2>
             <div class="contact-wrapper">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2474.3133452219768!2d30.520064479345706!3d50.45094490000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce5058d2981d%3A0x7c951a676051b365!2z0JzQsNC50LTQsNC9INCd0LXQt9Cw0LvQtdC20L3QvtGB0YLRliwgMSwg0JrQuNGX0LIsINCa0LjRl9Cy0YHRjNC60LAg0L7QsdC70LDRgdGC0YwsINCj0LrRgNCw0ZfQvdCwLCAwMjAwMA!5e1!3m2!1suk!2sau!4v1712192345067!5m2!1suk!2sau"
@@ -118,14 +118,16 @@
                 <div class="contact-info">
                   <ul>
                     <li>
-                      <p>Phone: <a href="tel:000000000">000000000</a></p>
+                      <p data-i18n="Phone">Phone:</p>
+                      <p><a href="tel:000000000">000000000</a></p>
                     </li>
                     <li>
-                      <p>E-mail: <a href="mailto:good.juice@inc.com">good.juice@inc.com</a></p>
+                      <p data-i18n="Mail">E-mail:</p>
+                      <p><a href="mailto:good.juice@inc.com">good.juice@inc.com</a></p>
                     </li>
                     <li>
-                      <p>Office:</p>
-                      <p>4 Peremoha square, 02000 , Kyiv, Ukraine</p>
+                      <p data-i18n="Office">Office:</p>
+                      <p data-i18n="Place">4 Peremoha square, 02000 , Kyiv, Ukraine</p>
                     </li>
                   </ul>
                 </div>
@@ -136,14 +138,14 @@
         <ul>
             <li>
                 <h4>GoodJuice.inc</h4>
-                <p id="quote">"Best juices ever"</p>
+                <p data-i18n="Quote" id="quote">"Best juices ever"</p>
             </li>
             <li>
-                <p>Policies:</p>
-                <p><a href="#">▸Support</a></p>
+                <p data-i18n="Policies">Policies:</p>
+                <p><a href="#" data-i18n="Support">▸Support</a></p>
             </li>
             <li>
-                <p>Social:</p>
+                <p data-i18n="Social">Social:</p>
                 <div class="social-icons"> 
                     <a href="#" target="_blank">
                         <i class="fab fa-facebook"></i>
@@ -157,8 +159,8 @@
                 </div>
             </li>
         </ul>
-        <p class="copyright">&copy;All rights reserved by GoodJuice.inc</p>
+        <p  class="copyright">&copy;<span data-i18n="Rights">All rights reserved by GoodJuice.inc</span></p>
     </footer>
-    <script src="../js/main.js"></script>
+    <script src="../js/main.js" ></script>
 </body>
 </html>

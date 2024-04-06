@@ -81,7 +81,8 @@ nav a{
   
   .lang-options {
     position: absolute;
-    background-color: #f1f1f1; 
+    background-color: #f1f1f1;
+    border: #6D843B 2px solid; 
     color: #6D843B;
     border-radius: 10px;
     margin: 0;
@@ -89,7 +90,7 @@ nav a{
   }
   
   .lang-options li {
-    padding: 5px 5px;
+    padding: 5px 2px;
   }
   
   .lang-options li:hover,.lang-btn:hover {
@@ -145,7 +146,8 @@ main{
 }
 
 .contact-info {
-    background-color: #f1f1f1; 
+    background-color: #f1f1f1;
+    border: #6D843B 2px solid; 
     padding: 20px; 
     border-radius: 10px; 
 }
