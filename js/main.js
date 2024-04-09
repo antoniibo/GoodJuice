@@ -1,3 +1,4 @@
+//langauge toogle
 const langBtn = document.querySelector('.lang-btn');
 const langOptions = document.querySelector('.lang-options');
 const languageDropdown = document.querySelector('.language-dropdown'); 
@@ -57,3 +58,6 @@ fetch('../js/translations.json')
         }
     }
 });
+
+//juices desccription toogle
+

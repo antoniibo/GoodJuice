@@ -121,13 +121,12 @@ main{
     text-align: center;
     font-size: 6rem;
 }
-
+/* ProductsSection */
 #products ul{
     display: flex;
     justify-content: space-around;
-    /* float: left;
-    width: 33.33%; */
 }
+/* AboutSection */
 #about{
     background-color: #BDBE70;
     color: #F6F6E9;
