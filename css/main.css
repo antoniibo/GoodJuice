@@ -87,6 +87,12 @@ nav a{
     border-radius: 10px;
     margin: 0;
     display: none;
+    transition: opacity 0.5s ease, visibility 0.5s;
+    visibility: visible;
+  }
+  .lang-options.closed, .language-dropdown.lang-options.closed {
+    display: none;
+    opacity: 0;
   }
   
   .lang-options li {
@@ -97,11 +103,11 @@ nav a{
     color: #dfb44a;
   }
   
-  .language-dropdown.open .lang-btn i {
+  .language-dropdown.open .lang-btn i{
     transform:  rotate(90deg);
   }
-  .language-dropdown.open .lang-options {
-    display: block;
+  .language-dropdown.open {
+    display: inline-block;
   }
 /* Main */
 main{

@@ -1,59 +1,59 @@
 const langBtn = document.querySelector('.lang-btn');
 const langOptions = document.querySelector('.lang-options');
-const languageDropdown = document.querySelector('.language-dropdown');
-const currentLang = localStorage.getItem('lang') || 'eng'; 
+const languageDropdown = document.querySelector('.language-dropdown'); 
+const defaultLanguage = 'Eng';
 
-// Function to fetch translations from JSON file
-async function fetchTranslations() {
-  try {
-    const response = await fetch('../js/translations.json');
-    const translations = await response.json();
-    return translations;
-  } catch (error) {
-    console.error('Error fetching translations:', error);
-  }
-}
+// Fetch translation data
+fetch('../js/translations.json')
+  .then(response => response.json())
+  .then(data => {
+    const langBtn = document.querySelector('.lang-btn');
+    const langOptions = document.querySelector('.lang-options');
+    const languageDropdown = document.querySelector('.language-dropdown'); 
+    const defaultLanguage = 'Eng';
 
-// Function to translate the content
-async function translateContent(lang) {
-    try {
-      const translations = await fetchTranslations();
-      const elements = document.querySelectorAll('[data-i18n]');
-      elements.forEach(element => {
-        const key = element.dataset.i18n;
-        element.textContent = translations[lang][key];
+    // Set default language text near the language button icon
+    langBtn.innerHTML = `<i class="fa-solid fa-caret-right"></i> ${defaultLanguage}`;
+
+    // Event listener for language button click
+    langBtn.addEventListener('click', () => {
+        langOptions.classList.remove('closed');
+      langOptions.classList.toggle('open');
+      languageDropdown.classList.toggle('open');
+      
+      // Toggle display property between 'none' and 'block'
+      langOptions.style.display = langOptions.classList.contains('open') ? 'block' : 'none';
+    });
+
+    // Event listener for language option click
+    const langLinks = document.querySelectorAll('.lang-options li a');
+    langLinks.forEach(link => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault(); 
+        const selectedLanguage = link.textContent.trim(); 
+        langBtn.innerHTML = `<i class="fa-solid fa-caret-right"></i> ${selectedLanguage}`; 
+        translatePage(selectedLanguage.toLowerCase(), data); 
+        langOptions.classList.add('closed'); 
+        setTimeout(() => {
+          langOptions.classList.remove('open'); 
+          languageDropdown.classList.remove('open');
+        }, 500); 
       });
-      // Update localStorage with the current language
-      localStorage.setItem('lang', lang);
-    } catch (error) {
-      console.error('Error fetching translations:', error);
-      // Handle the error here, like displaying an error message to the user
+    });
+
+    // Function to translate the page
+    function translatePage(language, translationData) {
+        if (translationData[language]) { 
+          document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translationData[language][key]) { 
+              el.textContent = translationData[language][key];
+            } else {
+              console.error(`Translation key '${key}' not found for language '${language}'`);
+            }
+          });
+        } else {
+          console.error(`Language '${language}' not found in translation data`);
+        }
     }
-  }
-
-// Event listener for language button click
-langBtn.addEventListener('click', () => {
-  langOptions.classList.toggle('open');
-  languageDropdown.classList.toggle('open');
-  
-  // Toggle display property between 'none' and 'block'
-  if (langOptions.classList.contains('open')) {
-    langOptions.style.display = 'block';
-  } else {
-    langOptions.style.display = 'none';
-  }
 });
-
-// Event listener for language option click
-const langLinks = document.querySelectorAll('.lang-options li a');
-langLinks.forEach(link => {
-  link.addEventListener('click', (event) => {
-    event.preventDefault(); // Prevent default link behavior
-    const lang = link.textContent.toLowerCase();
-    translateContent(lang); // Translate content
-    langOptions.classList.remove('open'); // Close dropdown
-  });
-});
-
-// Initial translation on page load
-translateContent(currentLang);
