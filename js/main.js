@@ -62,24 +62,34 @@ fetch('../js/translations.json')
 //juices desccription toogle
 document.addEventListener("DOMContentLoaded", function() {
     const descriptions = document.querySelectorAll('.product-description');
+    const images = document.querySelectorAll('#products img');
+    let prevActiveIndex = 0; 
 
-    descriptions[0].style.display = 'block'; // Display the first description by default
+    // Make the first description and image active by default
+    descriptions[0].style.display = 'block';
+    images[0].classList.add('active');
 
-    document.querySelectorAll('#products img').forEach((img, index) => {
+    images.forEach((img, index) => {
         img.addEventListener('click', function() {
-            // Remove 'active' class from all images
-            document.querySelectorAll('#products img').forEach((img) => {
-                img.classList.remove('active');
-            });
-            // Add 'active' class to the clicked image
-            img.classList.add('active');
+            // Shrink the previous active image
+            if (prevActiveIndex !== index) {
+                const prevImg = images[prevActiveIndex];
+                prevImg.classList.add('shrink');
+                prevImg.addEventListener('animationend', function() {
+                    this.classList.remove('active', 'shrink');
+                }, { once: true }); // The { once: true } option auto-removes the event listener after it's invoked
+            }
 
-            // Hide all descriptions
-            descriptions.forEach((description) => {
-                description.style.display = 'none';
-            });
-            // Display the description corresponding to the clicked image
-            descriptions[index].style.display = 'block';
+            // Delay the grow animation for the new active image
+            setTimeout(() => {
+                img.classList.add('active');
+                descriptions.forEach((description) => {
+                    description.style.display = 'none';
+                });
+                descriptions[index].style.display = 'block';;
+            }, 500); // This delay allows the shrink animation to complete
+
+            prevActiveIndex = index;
         });
     });
 });
