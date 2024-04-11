@@ -24,6 +24,9 @@ a:hover{
 h2{
     text-align: center;
 }
+p{
+    font-size: 110%;
+}
 /* Header and headerbar */
 header{
     z-index: 2;
@@ -165,13 +168,13 @@ header a, nav a{
     animation: grow 0.5s ease forwards;
 
 }
-.red img.active, .red .paragarph-swooper {
+.red img.active{
     border: #d32215 3px solid;
 }
-.orange img.active, .orange .paragarph-swooper {
+.orange img.active{
     border: #d37415 3px solid;
 }
-.pink img.active, .paragarph-swooper {
+.pink img.active{
     border: #ce1775 3px solid;
 }
 .paragarph-swooper{
@@ -201,23 +204,36 @@ header a, nav a{
 #about{
     background-color: #BDBE70;
     color: #F6F6E9;
-}
-#about h3{
-    /* position: absolute; */
-    /* top: 40%; */
-    /* right: 40%; */
-    /* transform: translate(-50%, -50%); */
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 20px;
 }
 #about li{
     display: flex;
+    padding-bottom: 10px;
+}
+#about h3{
+    text-align: center;
+}
+.aboutText{
+    max-width: 640px;
+    margin: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+#about img{
+    margin: auto;
+    max-width: 450px;
 }
 /* CONTACT US  Section*/
 #contact{
-    color: #6D843B; 
+    color: #6D843B;
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
 .contact-wrapper{
     display: flex; 
-    justify-content: space-between; 
+    justify-content: space-around; 
     padding: 20px; 
 }
 
