@@ -60,4 +60,26 @@ fetch('../js/translations.json')
 });
 
 //juices desccription toogle
+document.addEventListener("DOMContentLoaded", function() {
+    const descriptions = document.querySelectorAll('.product-description');
 
+    descriptions[0].style.display = 'block'; // Display the first description by default
+
+    document.querySelectorAll('#products img').forEach((img, index) => {
+        img.addEventListener('click', function() {
+            // Remove 'active' class from all images
+            document.querySelectorAll('#products img').forEach((img) => {
+                img.classList.remove('active');
+            });
+            // Add 'active' class to the clicked image
+            img.classList.add('active');
+
+            // Hide all descriptions
+            descriptions.forEach((description) => {
+                description.style.display = 'none';
+            });
+            // Display the description corresponding to the clicked image
+            descriptions[index].style.display = 'block';
+        });
+    });
+});
