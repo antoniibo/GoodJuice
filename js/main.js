@@ -1,3 +1,4 @@
+//langauge toogle
 const langBtn = document.querySelector('.lang-btn');
 const langOptions = document.querySelector('.lang-options');
 const languageDropdown = document.querySelector('.language-dropdown'); 
@@ -43,17 +44,84 @@ fetch('../js/translations.json')
 
     // Function to translate the page
     function translatePage(language, translationData) {
-        if (translationData[language]) { 
+      const htmlTag = document.documentElement; // Get the <html> element
+  
+      if (translationData[language]) { 
           document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (translationData[language][key]) { 
-              el.textContent = translationData[language][key];
-            } else {
-              console.error(`Translation key '${key}' not found for language '${language}'`);
-            }
+              const key = el.getAttribute('data-i18n');
+              if (translationData[language][key]) { 
+                  el.textContent = translationData[language][key];
+              } else {
+                  console.error(`Translation key '${key}' not found for language '${language}'`);
+              }
           });
-        } else {
+  
+          // Update the lang attribute of the <html> tag
+          if (language === 'eng') {
+              htmlTag.setAttribute('lang', 'en');
+          } else if (language === 'ua') {
+              htmlTag.setAttribute('lang', 'uk');
+          }
+      } else {
           console.error(`Language '${language}' not found in translation data`);
-        }
-    }
+      }
+  }
+});
+// Function to translate the page and update the lang attribute
+function translatePage(language, translationData) {
+  const htmlTag = document.documentElement; // Get the <html> element
+
+  if (translationData[language]) { 
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (translationData[language][key]) { 
+              el.textContent = translationData[language][key];
+          } else {
+              console.error(`Translation key '${key}' not found for language '${language}'`);
+          }
+      });
+
+      // Update the lang attribute of the <html> tag
+      if (language === 'eng') {
+          htmlTag.setAttribute('lang', 'en');
+      } else if (language === 'ua') {
+          htmlTag.setAttribute('lang', 'uk');
+      }
+  } else {
+      console.error(`Language '${language}' not found in translation data`);
+  }
+}
+//juices desccription toogle
+document.addEventListener("DOMContentLoaded", function() {
+    const descriptions = document.querySelectorAll('.product-description');
+    const images = document.querySelectorAll('#products img');
+    let prevActiveIndex = 0; 
+
+    // Make the first description and image active by default
+    descriptions[0].style.display = 'block';
+    images[0].classList.add('active');
+
+    images.forEach((img, index) => {
+        img.addEventListener('click', function() {
+            // Shrink the previous active image
+            if (prevActiveIndex !== index) {
+                const prevImg = images[prevActiveIndex];
+                prevImg.classList.add('shrink');
+                prevImg.addEventListener('animationend', function() {
+                    this.classList.remove('active', 'shrink');
+                }, { once: true }); // The { once: true } option auto-removes the event listener after it's invoked
+            }
+
+            // Delay the grow animation for the new active image
+            setTimeout(() => {
+                img.classList.add('active');
+                descriptions.forEach((description) => {
+                    description.style.display = 'none';
+                });
+                descriptions[index].style.display = 'block';;
+            }, 500); // This delay allows the shrink animation to complete
+
+            prevActiveIndex = index;
+        });
+    });
 });
