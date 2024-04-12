@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+}
 body{
     margin: 0;
     padding: 0;
@@ -23,6 +26,7 @@ a:hover{
 }
 h2{
     text-align: center;
+    font-size: 160%;
 }
 p{
     font-size: 110%;
@@ -140,6 +144,7 @@ header a, nav a{
     color: #6D843B;
     text-align: center;
     margin-top: 50px; 
+    scroll-margin-top: 110px;
 }
 #products h2{
     margin-bottom: 10px;
@@ -169,7 +174,7 @@ header a, nav a{
 
 }
 .red img.active{
-    border: #d32215 3px solid;
+    border: #6D843B 3px solid;  
 }
 .orange img.active{
     border: #d37415 3px solid;
@@ -183,7 +188,7 @@ header a, nav a{
     border-radius: 10px;
     padding: 15px;
     margin-top: 10px;
-    border: #6D843B 2px solid; 
+    border: rgba(109, 132, 59, 0.3) 2px solid; 
 }
 @keyframes shrink {
     from {
@@ -207,6 +212,10 @@ header a, nav a{
     border-radius: 10px;
     padding-top: 10px;
     padding-bottom: 20px;
+    scroll-margin-top: 96px;
+}
+#about h2{
+    margin-bottom: 40px;
 }
 #about li{
     display: flex;
@@ -230,6 +239,7 @@ header a, nav a{
     color: #6D843B;
     margin-top: 40px;
     margin-bottom: 20px;
+    scroll-margin-top: 100px;
 }
 .contact-wrapper{
     display: flex; 
@@ -237,20 +247,34 @@ header a, nav a{
     padding: 20px; 
 }
 
-.contact-info {
-    background-color: #ffffff;
-    border: #6D843B 2px solid; 
-    padding: 20px; 
-    border-radius: 10px; 
-}
-
 .contact-info ul {
     list-style: none; 
     padding: 0; 
 }
 
-.contact-info li {
-    margin-bottom: 10px; 
+.contact-info li#phone-email ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact-info li#phone-email ul li {
+    width: 178px;
+}
+
+.contact-info li#phone-email ul li,
+.contact-info li#office {
+    background-color: #ffffff;
+    border: rgba(109, 132, 59, 0.3) 2px solid; 
+
+    padding: 20px; 
+    border-radius: 7px;
+    margin: 0 5px 10px 5px;
+}
+
+.contact-under{
+    text-align: center;
+    font-size: 80%;
+    margin-bottom: 20px;
 }
   
 /* FOOTER */
@@ -266,10 +290,23 @@ footer{
 }
 footer ul{
     display: flex;
-    justify-content:space-around;
+    justify-content:space-between;
+    margin-left: 7%;
+    margin-right: 7%;
+}
+footer li{
+    width: 210px;
+}
+footer li p{
+    text-align: center;
 }
 footer h4{
+    font-size: 120%;
     margin-bottom: 5px;
+}
+footer .social-icons{
+    justify-content: space-around;
+    font-size: 140%;
 }
 #quote {
     background-color: #ffffff;
@@ -277,11 +314,8 @@ footer h4{
     color: #6D843B; 
     padding: 10px 20px; 
     border-radius: 10px; 
-    margin:5px;
-   
   }
 .copyright {
     font-size: 0.8rem; 
     text-align: center; 
-    margin: 3px 0; 
   }

@@ -20,6 +20,8 @@
         "Mail":"E-mail:",
         "Office":"Office:",
         "Place":"4 Peremoha square, 02000 , Kyiv, Ukraine",
+        "Open":"We working Monday to Friday from 10am to 8pm and Saturday to Sunday from 11am to 6pm",
+        "Question":"If you have any proposition, we would be happy to hear them!",
         "Quote":"\"Best juices ever\"",
         "Policies":"Policies:",
         "Support":"▸Support",
@@ -27,7 +29,7 @@
         "Rights":"All rights reserved by GoodJuice.inc"
     },
     "ua":{
-        "Prod":"Вироби",
+        "Prod":"Продукція",
         "AbUs":"Про Нас",
         "ConUs":"Зв'язок",
         "heroImg": "НЕЗАБУТНІ СМАКИ",
@@ -47,6 +49,8 @@
         "Mail":"Пошта:",
         "Office":"Знаходження:",
         "Place":"Проспект Перемоги 4, 02000, Київ, Україна",
+        "Open":"Ми відкриті з понеділка по п'ятницю з 10:00 до 20:00 та у суботу і неділю з 11:30 до 18:00",
+        "Question":"Якщо у вас є пропозиції та питання, ми раді будемо почути їх!",
         "Quote":"\"Найкращі соки світу\"",
         "Policies":"Наша політика:",
         "Support":"▸Підтримка",

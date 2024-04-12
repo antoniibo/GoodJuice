@@ -44,21 +44,53 @@ fetch('../js/translations.json')
 
     // Function to translate the page
     function translatePage(language, translationData) {
-        if (translationData[language]) { 
+      const htmlTag = document.documentElement; // Get the <html> element
+  
+      if (translationData[language]) { 
           document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (translationData[language][key]) { 
-              el.textContent = translationData[language][key];
-            } else {
-              console.error(`Translation key '${key}' not found for language '${language}'`);
-            }
+              const key = el.getAttribute('data-i18n');
+              if (translationData[language][key]) { 
+                  el.textContent = translationData[language][key];
+              } else {
+                  console.error(`Translation key '${key}' not found for language '${language}'`);
+              }
           });
-        } else {
+  
+          // Update the lang attribute of the <html> tag
+          if (language === 'eng') {
+              htmlTag.setAttribute('lang', 'en');
+          } else if (language === 'ua') {
+              htmlTag.setAttribute('lang', 'uk');
+          }
+      } else {
           console.error(`Language '${language}' not found in translation data`);
-        }
-    }
+      }
+  }
 });
+// Function to translate the page and update the lang attribute
+function translatePage(language, translationData) {
+  const htmlTag = document.documentElement; // Get the <html> element
 
+  if (translationData[language]) { 
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (translationData[language][key]) { 
+              el.textContent = translationData[language][key];
+          } else {
+              console.error(`Translation key '${key}' not found for language '${language}'`);
+          }
+      });
+
+      // Update the lang attribute of the <html> tag
+      if (language === 'eng') {
+          htmlTag.setAttribute('lang', 'en');
+      } else if (language === 'ua') {
+          htmlTag.setAttribute('lang', 'uk');
+      }
+  } else {
+      console.error(`Language '${language}' not found in translation data`);
+  }
+}
 //juices desccription toogle
 document.addEventListener("DOMContentLoaded", function() {
     const descriptions = document.querySelectorAll('.product-description');
