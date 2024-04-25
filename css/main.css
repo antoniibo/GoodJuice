@@ -75,16 +75,16 @@ header a, nav a{
     display: inline-block;
   }
   
-  .lang-btn {
+  .lang-btn{
     background: none;
     border: none;
     color: inherit;
     font-size: 1.3rem;
     cursor: pointer;
-    padding: 5px 10px;
+    padding: 0px 10px;
   }
   
-  .lang-btn i {
+  .lang-btn i{
     margin-left: 5px;
     transition: transform 0.3s ease;
   }
@@ -95,14 +95,14 @@ header a, nav a{
     border: #6D843B 2px solid; 
     color: #6D843B;
     border-radius: 10px;
-    margin: 0;
+    margin-top: 5px;
     display: none;
     transition: opacity 0.5s ease, visibility 0.5s;
     visibility: visible;
   }
   .lang-options.closed, .language-dropdown.lang-options.closed {
     display: none;
-    opacity: 0;
+    opacity: 1;
   }
   
   .lang-options li {
@@ -119,6 +119,62 @@ header a, nav a{
   .language-dropdown.open {
     display: inline-block;
   }
+/* Mobile navigation */
+.mobile-burger{
+    display: none;
+}
+.nav-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-btn i {
+    transition: transform 0.3s ease;
+}
+
+.nav-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    border: #6D843B 2px solid;
+    color: #6D843B;
+    border-radius: 10px;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    visibility: hidden;
+}
+
+.nav-options li {
+    padding: 5px 2px;
+}
+
+.nav-options li:hover, .nav-btn:hover {
+    color: #dfb44a;
+}
+
+.nav-options.open {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+.nav-btn i {
+    transition: transform 0.3s ease;
+  }
+  
+  .nav-btn i.fa-xmark {
+    transform: rotate(90deg);
+  }
+  
+
 /* Main */
 #wrapper{
     max-width: 1420px;
@@ -318,4 +374,36 @@ footer .social-icons{
 .copyright {
     font-size: 0.8rem; 
     text-align: center; 
+  }
+  @media only screen and (max-width: 950px) 
+  {
+    #header-wrapper{
+        margin-left: 5%;
+        margin-right: 5%;
+        justify-content: space-between;
+        font-size: 0.8rem;
+    }
+    
+    .mobile-burger{
+        display: inline-block;
+    }
+    header .social-icons,nav{
+        display: none;
+    }
+    #heroImg{
+        height: 400px;
+    }
+    #heroImg p{
+        padding-top: 140px;
+        font-size: 3rem;
+    }
+    #products{
+        /* display: none; */
+    }
+    #about{
+        display: none;
+    }
+    #contact{
+        display: none;
+    }
   }

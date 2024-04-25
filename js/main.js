@@ -1,8 +1,3 @@
-//langauge toogle
-const langBtn = document.querySelector('.lang-btn');
-const langOptions = document.querySelector('.lang-options');
-const languageDropdown = document.querySelector('.language-dropdown'); 
-const defaultLanguage = 'Eng';
 
 // Fetch translation data
 fetch('../js/translations.json')
@@ -18,7 +13,6 @@ fetch('../js/translations.json')
 
     // Event listener for language button click
     langBtn.addEventListener('click', () => {
-        langOptions.classList.remove('closed');
       langOptions.classList.toggle('open');
       languageDropdown.classList.toggle('open');
       
@@ -38,6 +32,7 @@ fetch('../js/translations.json')
         setTimeout(() => {
           langOptions.classList.remove('open'); 
           languageDropdown.classList.remove('open');
+          langOptions.style.display = langOptions.classList.contains('open') ? 'block' : 'none';
         }, 500); 
       });
     });
@@ -91,6 +86,8 @@ function translatePage(language, translationData) {
       console.error(`Language '${language}' not found in translation data`);
   }
 }
+
+
 //juices desccription toogle
 document.addEventListener("DOMContentLoaded", function() {
     const descriptions = document.querySelectorAll('.product-description');
@@ -124,4 +121,49 @@ document.addEventListener("DOMContentLoaded", function() {
             prevActiveIndex = index;
         });
     });
+});
+
+
+//Mobile nav toogle 
+const navBtn = document.querySelector('.nav-btn');
+const navOptions = document.querySelector('.nav-options');
+const mobileBurger = document.querySelector('.mobile-burger'); 
+navBtn.addEventListener('click', toggleMenu);
+
+// toggle menu
+function toggleMenu() {
+  navOptions.classList.toggle('open');
+  mobileBurger.classList.toggle('open');
+  navOptions.style.display = navOptions.classList.contains('open') ? 'block' : 'none';
+  toggleIcon();
+}
+
+// toggle icon
+function toggleIcon() {
+  const icon = navBtn.querySelector('i');
+  icon.classList.toggle('fa-bars');
+  icon.classList.toggle('fa-xmark');
+}
+
+// page listener
+document.addEventListener('click', function(event) {
+  const isClickInsideNav = mobileBurger.contains(event.target);
+  
+  if (!isClickInsideNav && navOptions.classList.contains('open')) {
+    toggleMenu();
+  }
+});
+
+// close trough atribute 'a' or 'i'
+document.addEventListener('click', function(event) {
+  if (event.target.tagName === 'A') {
+    if (navOptions.classList.contains('open')) {
+      toggleMenu();
+    }
+  }
+});
+
+// 
+navBtn.addEventListener('click', function(event) {
+  event.stopPropagation();
 });
