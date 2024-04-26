@@ -277,6 +277,9 @@ header a, nav a{
     display: flex;
     padding-bottom: 10px;
 }
+.about-reverse{
+    flex-direction: row-reverse;
+}
 #about h3{
     text-align: center;
 }
@@ -289,6 +292,7 @@ header a, nav a{
 #about img{
     margin: auto;
     max-width: 450px;
+    border-radius: 5px;
 }
 /* CONTACT US  Section*/
 #contact{
@@ -375,21 +379,23 @@ footer .social-icons{
     font-size: 0.8rem; 
     text-align: center; 
   }
-  @media only screen and (max-width: 950px) 
-  {
+@media only screen and (max-width: 950px) 
+{
+      /* Header and Nav */
     #header-wrapper{
         margin-left: 5%;
         margin-right: 5%;
         justify-content: space-between;
         font-size: 0.8rem;
     }
-    
+
     .mobile-burger{
         display: inline-block;
     }
     header .social-icons,nav{
         display: none;
     }
+    /* Hero image */
     #heroImg{
         height: 400px;
     }
@@ -397,13 +403,54 @@ footer .social-icons{
         padding-top: 140px;
         font-size: 3rem;
     }
-    #products{
-        /* display: none; */
+    /* section Products */
+    .paragarph-swooper{
+        margin-left: 5%;
+        margin-right: 5%;
+        font-size: 0.9rem;
     }
+    .product-description{
+        margin: 0;
+    }
+    /* section About Us */
     #about{
-        display: none;
+        border-radius: 0%;
+        scroll-margin-top: 71px;
     }
-    #contact{
-        display: none;
+    #about h2{
+        margin-bottom: 15px;
     }
-  }
+    #about li{
+        flex-direction: column-reverse;
+        margin: 0 5% ;
+    }
+    #about img{
+        width: 100%;
+        object-fit: cover;
+    }
+    /* section Contact Us */
+    .contact-wrapper{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    iframe{
+        max-width: 450px;
+        margin-bottom: 10px;
+    }
+}
+@media only screen and (max-width: 480px)
+{
+    h1{
+        font-size: 1.3rem;
+    }
+    .contact-info li#phone-email ul{
+        flex-direction: column;
+    }
+    #phone-email li{
+        object-fit: cover;
+    }
+    iframe{
+        width: 100%;
+        object-fit: cover;
+    }
+}
