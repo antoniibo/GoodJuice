@@ -64,7 +64,7 @@ fetch('../js/translations.json')
 });
 // Function to translate the page and update the lang attribute
 function translatePage(language, translationData) {
-  const htmlTag = document.documentElement; // Get the <html> element
+  const htmlTag = document.documentElement; 
 
   if (translationData[language]) { 
       document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -124,46 +124,56 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-//Mobile nav toogle 
+
+
+// page listener
+// document.addEventListener('click', function(event) {
+//   const isClickInsideNav = mobileBurger.contains(event.target);
+  
+//   if (!isClickInsideNav && navOptions.classList.contains('open')) {
+//     toggleMenu();
+//   }
+// });
+
+// Mobile nav toggle
 const navBtn = document.querySelector('.nav-btn');
 const navOptions = document.querySelector('.nav-options');
 const mobileBurger = document.querySelector('.mobile-burger'); 
-navBtn.addEventListener('click', toggleMenu);
 
-// toggle menu
+// Toggle menu
 function toggleMenu() {
   navOptions.classList.toggle('open');
   mobileBurger.classList.toggle('open');
-  navOptions.style.display = navOptions.classList.contains('open') ? 'block' : 'none';
   toggleIcon();
 }
 
-// toggle icon
+// Toggle icon
 function toggleIcon() {
   const icon = navBtn.querySelector('i');
   icon.classList.toggle('fa-bars');
   icon.classList.toggle('fa-xmark');
 }
 
-// page listener
+// Event listener for nav button
+navBtn.addEventListener('click', function(event) {
+  event.stopPropagation(); // Prevent click from propagating to document
+  toggleMenu();
+});
+
+// Close menu when clicking on a link or outside the menu
 document.addEventListener('click', function(event) {
   const isClickInsideNav = mobileBurger.contains(event.target);
-  
-  if (!isClickInsideNav && navOptions.classList.contains('open')) {
+
+  // if (!isClickInsideNav) {
+  //   if (navOptions.classList.contains('open')) {
+  //     toggleMenu();
+  //   }
+  // }
+});
+
+// Close menu when clicking on a link
+document.addEventListener('click', function(event) {
+  if (event.target.tagName === 'A' && navOptions.classList.contains('open')) {
     toggleMenu();
   }
-});
-
-// close trough atribute 'a' or 'i'
-document.addEventListener('click', function(event) {
-  if (event.target.tagName === 'A') {
-    if (navOptions.classList.contains('open')) {
-      toggleMenu();
-    }
-  }
-});
-
-// 
-navBtn.addEventListener('click', function(event) {
-  event.stopPropagation();
 });
