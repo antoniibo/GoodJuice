@@ -10,6 +10,25 @@
 <body>
     <header>
         <div id="header-wrapper">
+            <div class="mobile-burger">
+                <button class="nav-btn"><i class="fa-solid fa-bars"></i></button>
+                <ul class="nav-options">
+                    <li class="nav-options-top"><a href="#products" data-i18n="Prod">Products</a></li>
+                    <li class="nav-options-top"><a href="#about" data-i18n="AbUs">About Us</a></li>
+                    <li class="nav-options-top"><a href="#contact" data-i18n="ConUs">Contact Us</a></li>
+                    <li class="burger-icons">
+                        <a href="#" target="_blank">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
             <h1>GoodJuice.inc</h1>
             <nav>
                 <ul >
@@ -45,7 +64,7 @@
             </div>
             <section id="products">
                 <h2 data-i18n="Prod">Products</h2>
-                <ul>
+                <ul id="carousel">
                     <li class="red">
                         <h3 data-i18n="Apple">Apple-Chamomile</h3>
                         <img src="../images/apple-juice.png" alt="apple juice">
@@ -59,6 +78,10 @@
                         <img src="../images/watermelon-juice.png" alt="watermelon juice">
                     </li>
                 </ul> 
+                <div class="control-buttons">
+                    <button id="prevBtn"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button id="nextBtn"><i class="fa-solid fa-arrow-right "></i></button>
+                </div>
                 <div class="paragarph-swooper">
                     <p class="product-description" data-i18n="AppleT">
                         Craving a taste of tranquility? Our Apple-Chamomile juice is the perfect blend for you. 
@@ -104,7 +127,8 @@
                             </p>
                         </div>
                     </li>
-                    <li>
+                    <li class="about-reverse">
+                        <img src="../images/process.jpg" alt="photo">
                         <div class="aboutText">
                             <h3 data-i18n="ProcessesH">Processes</h3>
                             <p data-i18n="ProcessesT">        
@@ -118,7 +142,6 @@
                                 with freshness, aroma and vitamins.
                             </p>
                         </div>
-                        <img src="../images/process.jpg" alt="photo">
                     </li>
                     <li>
                         <img src="../images/team.jpg" alt="photo">
@@ -184,7 +207,7 @@
                 </div>
                 <div class="contact-under">
                     <p data-i18n="Open">We working Monday to Friday from 10am to 8pm and Saturday to Sunday from 11am to 6pm</p>
-                    <p data-i18n="Question">If you have any proposition, we would be happy to hear them!</p>
+                    <p data-i18n="Question">If you have any suggestions, we would be happy to hear them!</p>
                 </div>
             </section>
         </div>
@@ -216,7 +239,7 @@
                 </li>
             </ul>
             <p  class="copyright">&copy;<span data-i18n="Rights">All rights reserved by GoodJuice.inc</span></p>
-    </div>
+        </div>
     </footer>
     <script src="https://kit.fontawesome.com/8b30fb631a.js" crossorigin="anonymous"></script>
     <script src="../js/main.js" ></script>
