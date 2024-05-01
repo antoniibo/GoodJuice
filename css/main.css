@@ -21,6 +21,9 @@ a{
     color: inherit;
 
 }
+a:visited{
+    color: inherit;
+}
 a:hover{
     color: #dfb44a;
 }
@@ -70,7 +73,7 @@ header a, nav a{
     margin: 0 8px; 
 }
 /* Language dropdown */
-language-dropdown {
+.language-dropdown {
     position: relative;
     display: inline-block;
   }
@@ -271,6 +274,46 @@ language-dropdown {
 .product-description {
     display: none;
 }
+.control-buttons{
+    display: none;
+    justify-content: space-around;
+    z-index: 1;
+}
+.control-buttons button{
+    font-size: 1.5rem;
+    background-color: #6D843B;
+    color: #F6F6E9;
+    border-radius: 10px;
+    border: none;
+}
+.control-buttons button:active{
+    color: #dfb44a;
+}
+#carousel {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden; 
+    outline: none;
+}
+#carousel::-webkit-scrollbar {
+    display: none; 
+}
+#carousel {
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+.swoop-in {
+    animation: swoopIn 0.5s forwards;
+}
+@keyframes swoopIn {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+}
 /* About Section */
 #about{
     background-color: #BDBE70;
@@ -414,13 +457,41 @@ footer .social-icons{
         font-size: 3rem;
     }
     /* section Products */
-    .paragarph-swooper{
+    #products h3{
+        height: 40px;
+    }
+    .paragarph-swooper {
         margin-left: 5%;
         margin-right: 5%;
         font-size: 0.9rem;
+        transition: margin 0.5s ease; 
     }
-    .product-description{
-        margin: 0;
+    #products li {
+        margin: 20px;
+        scroll-snap-align: center;
+        flex: 0 0 250px;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+        /* position: absolute; */
+    }
+    
+    #products ul {
+        display: flex;
+        overflow-x: hidden;
+        will-change: transform;
+        /* position: relative; */
+    }
+    
+    #products img {
+        border-radius: 100%;
+        opacity: 0.8; 
+        transition: opacity 0.5s ease; 
+    }
+    
+    #products li.active img {
+        opacity: 1; 
+    }
+    .control-buttons{
+        display: flex;
     }
     /* section About Us */
     #about{
