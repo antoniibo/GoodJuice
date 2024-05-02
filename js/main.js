@@ -218,12 +218,6 @@ function checkScreenWidth() {
 window.addEventListener('resize', checkScreenWidth);
 document.addEventListener('DOMContentLoaded', checkScreenWidth);
 
-// block scrolling of the carousel
-const carousel = document.getElementById('carousel');
-carousel.addEventListener('touchmove', function(e) {
-    e.preventDefault();
-}, { passive: false });
-
 // page listener
 // document.addEventListener('click', function(event) {
 //   const isClickInsideNav = mobileBurger.contains(event.target);

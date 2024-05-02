@@ -194,7 +194,7 @@ header a, nav a{
     margin: auto;
 }
 #heroImg{
-    background-image: url(../images/main.png);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.3)) ,url(../images/main.png);
     background-color: #cccccc; 
     background-position: center; 
     background-repeat: no-repeat;
@@ -202,7 +202,7 @@ header a, nav a{
     color: #F6F6E9;
     height: 19cm;
 }
-#heroImg p{
+#heroImg h2{
     margin: auto;
     padding-top: 270px;
     text-align: center;
@@ -214,6 +214,8 @@ header a, nav a{
     text-align: center;
     margin-top: 50px; 
     scroll-margin-top: 120px;
+
+    height: 830px
 }
 #products h2{
     margin-bottom: 10px;
@@ -257,7 +259,9 @@ header a, nav a{
     border-radius: 10px;
     padding: 15px;
     margin-top: 10px;
-    border: rgba(109, 132, 59, 0.3) 2px solid; 
+    border: rgba(109, 132, 59, 0.3) 2px solid;
+    text-align: left;
+    margin-bottom: 0%; 
 }
 @keyframes shrink {
     from {
@@ -432,6 +436,12 @@ footer .social-icons{
     font-size: 0.8rem; 
     text-align: center; 
   }
+@media only screen and (max-width: 1400px) 
+{
+    #products{
+        height: calc(290px + 43vw)
+    }
+}
 @media only screen and (max-width: 950px) 
 {
       /* Header and Nav */
@@ -452,13 +462,13 @@ footer .social-icons{
     #heroImg{
         height: 400px;
     }
-    #heroImg p{
+    #heroImg h2{
         padding-top: 140px;
         font-size: 3rem;
     }
     /* section Products */
-    #products h3{
-        height: 40px;
+    #products{
+        height: calc(850px - 20vw);
     }
     .paragarph-swooper {
         margin-left: 5%;
@@ -496,7 +506,7 @@ footer .social-icons{
     /* section About Us */
     #about{
         border-radius: 0%;
-        scroll-margin-top: 71px;
+        scroll-margin-top: 70px;
     }
     #about h2{
         margin-bottom: 15px;
@@ -532,6 +542,16 @@ footer .social-icons{
         font-size: 1.3rem;
         text-align: center;
     }
+    #heroImg h2{
+        font-size: 2.5rem;
+    }
+    /* Products section */
+    #products{
+        height: auto
+    }
+    .paragarph-swooper{
+        margin-bottom: 20px;
+    }
     /* Contact Us Section */
     #contact{
         scroll-margin-top: 100px;
@@ -562,4 +582,24 @@ footer .social-icons{
       margin: -7px 10px 0px 10px;
     }
 
+}
+@media only screen and (max-width: 320px), only screen and (max-height: 715px) 
+{
+    *{
+        font-size: small;
+    }
+    #products,#about{
+        scroll-margin-top: 60px;
+    }
+    /* navigation and header */
+    .nav-options-top {
+        margin-top: 70px;
+    }
+    .burger-icons{
+        display: none;
+    }
+    /* products section */
+    .control-buttons i{
+        font-size: 1.5rem;
+    }
 }
