@@ -1,1 +1,1 @@
-just follow the link to rty website online: https://archiprojecttest.000webhostapp.com/
+just follow the link to try website online: https://archiprojecttest.000webhostapp.com/

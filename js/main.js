@@ -170,9 +170,8 @@ function setupDesktop() {
   const container = document.getElementById('products');
   const descriptions = document.querySelectorAll('.product-description');
   const images = document.querySelectorAll('#products img');
-  let prevActiveIndex = currentIndex; // Використовуйте currentIndex як початкове значення
+  let prevActiveIndex = currentIndex; 
 
-  // Встановіть активний елемент відповідно до поточного індексу
   images.forEach((img, index) => {
     img.classList.remove('active');
     descriptions[index].style.display = 'none';
@@ -191,8 +190,8 @@ function setupDesktop() {
         img.classList.add('active');
         descriptions[index].style.display = 'block';
         
-        currentIndex = index; // Оновіть поточний індекс
-        prevActiveIndex = index; // Оновіть prevActiveIndex
+        currentIndex = index; 
+        prevActiveIndex = index; 
       }
     }
   });
