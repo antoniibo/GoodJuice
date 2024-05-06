@@ -100,50 +100,59 @@ function translatePage(language, translationData) {
 function setupMobile() {
   const carousel = document.getElementById('carousel');
   const items = Array.from(carousel.children);
-  let currentIndex = 1; 
+  let currentIndex = 1;
+  let startX;
 
   function updateCarousel() {
-    // Clear the current content of the carousel
-    carousel.innerHTML = '';
 
-    // Calculate index of elements
-    let leftIndex = (currentIndex - 1 + items.length) % items.length;
-    let rightIndex = (currentIndex + 1) % items.length;
+      const fragment = document.createDocumentFragment();
+      let leftIndex = (currentIndex - 1 + items.length) % items.length;
+      let rightIndex = (currentIndex + 1) % items.length;
 
-    // Append elements in the correct order
-    carousel.appendChild(items[leftIndex]);
-    carousel.appendChild(items[currentIndex]);
-    carousel.appendChild(items[rightIndex]);
+      fragment.appendChild(items[leftIndex]);
+      fragment.appendChild(items[currentIndex]);
+      fragment.appendChild(items[rightIndex]);
 
-    // Update classes for opacity and scale
-    items.forEach(item => {
-      item.classList.remove('active'); 
-      const activeImage = item.querySelector('img');
+
+      carousel.innerHTML = '';
+      carousel.appendChild(fragment);
+
+      items.forEach(item => {
+          item.classList.remove('active');
+          const activeImage = item.querySelector('img');
+          if (activeImage) {
+              activeImage.classList.remove('active');
+          }
+      });
+
+      items[currentIndex].classList.add('active');
+      const descriptions = document.querySelectorAll('.product-description');
+      descriptions.forEach((description) => description.style.display = 'none');
+      descriptions[currentIndex].style.display = 'block';
+      descriptions[currentIndex].classList.add('swoop-in');
+      const activeItem = items[currentIndex];
+      const activeImage = activeItem.querySelector('img');
       if (activeImage) {
-        activeImage.classList.remove('active'); 
+          activeImage.classList.add('active');
       }
-    });
-    items[currentIndex].classList.add('active');
-
-    // Update descriptions (mobile version)
-    const descriptions = document.querySelectorAll('.product-description');
-    descriptions.forEach((description) => description.style.display = 'none');
-    descriptions[currentIndex].style.display = 'block';
-
-    // Add swooping animation for descriptions (mobile version - optional)
-    descriptions[currentIndex].classList.add('swoop-in'); 
-
-    // Find the image inside the active list item (li)
-    const activeItem = items[currentIndex];
-    const activeImage = activeItem.querySelector('img'); 
-    if (activeImage) {
-      activeImage.classList.add('active'); 
-    }
   }
 
+  carousel.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+  });
+
+  carousel.addEventListener('touchend', (e) => {
+      const endX = e.changedTouches[0].clientX;
+      if (startX - endX > 50) {
+          currentIndex = (currentIndex + 1) % items.length;
+          updateCarousel();
+      } else if (endX - startX > 50) {
+          currentIndex = (currentIndex - 1 + items.length) % items.length;
+          updateCarousel();
+      }
+  });
 
   updateCarousel();
-
   document.getElementById('prevBtn').addEventListener('click', function() {
     currentIndex = (currentIndex - 1 + items.length) % items.length;
     updateCarousel();
@@ -156,47 +165,54 @@ function setupMobile() {
 }
 
 //Toggle juices desktop
+let currentIndex = 0;
 function setupDesktop() {
-    const descriptions = document.querySelectorAll('.product-description');
-    const images = document.querySelectorAll('#products img');
-    let prevActiveIndex = 0;
+  const container = document.getElementById('products');
+  const descriptions = document.querySelectorAll('.product-description');
+  const images = document.querySelectorAll('#products img');
+  let prevActiveIndex = currentIndex; // Використовуйте currentIndex як початкове значення
 
-    images.forEach((img, index) => {
-        img.addEventListener('click', function() {
-            if (prevActiveIndex !== index) {
-                const prevImg = images[prevActiveIndex];
-                prevImg.classList.add('shrink');
-                prevImg.addEventListener('animationend', function() {
-                    this.classList.remove('active', 'shrink');
-                }, { once: true });
-            }
+  // Встановіть активний елемент відповідно до поточного індексу
+  images.forEach((img, index) => {
+    img.classList.remove('active');
+    descriptions[index].style.display = 'none';
+  });
+  images[currentIndex].classList.add('active');
+  descriptions[currentIndex].style.display = 'block';
+  
+  container.addEventListener('click', function(e) {
+    const img = e.target.closest('img');
+    if (img) {
+      const index = Array.from(images).indexOf(img);
+      if (prevActiveIndex !== index) {
+        images[prevActiveIndex].classList.remove('active');
+        descriptions[prevActiveIndex].style.display = 'none';
+        
+        img.classList.add('active');
+        descriptions[index].style.display = 'block';
+        
+        currentIndex = index; // Оновіть поточний індекс
+        prevActiveIndex = index; // Оновіть prevActiveIndex
+      }
+    }
+  });
 
-            setTimeout(() => {
-                img.classList.add('active');
-                descriptions.forEach((description) => {
-                    description.style.display = 'none';
-                });
-                descriptions[index].style.display = 'block';
-            }, 500);
-
-            prevActiveIndex = index;
-        });
-    });
-
-    // Initially show first description and image
-    descriptions[0].style.display = 'block';
-    images[0].classList.add('active');
+  // Initially show first description and image
+  descriptions[currentIndex].style.display = 'block';
+  images[currentIndex].classList.add('active');
 }
 
 // tracker of the center of the carousel
 function centerCarousel() {
   const carousel = document.getElementById('carousel');
   const items = carousel.querySelectorAll('li');
-  const carouselWidth = carousel.offsetWidth;
-  const itemWidth = items[0].offsetWidth;
+  const carouselRect = carousel.getBoundingClientRect();
+  const itemRect = items[0].getBoundingClientRect();
+  const carouselWidth = carouselRect.width;
+  const itemWidth = itemRect.width;
   const scrollPosition = (items.length * itemWidth - carouselWidth) / 2;
   carousel.scrollLeft = scrollPosition + itemWidth / 4;
-} 
+}
 
 let isMobileView = window.innerWidth < 950;
 

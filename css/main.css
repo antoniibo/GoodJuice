@@ -185,6 +185,7 @@ header a, nav a{
 }
 .burger-icons a{
     width: 50px;
+    padding: 0 5px;
 }
   
 
@@ -204,7 +205,7 @@ header a, nav a{
 }
 #heroImg h2{
     margin: auto;
-    padding-top: 270px;
+    padding-top: 290px;
     text-align: center;
     font-size: 5rem;
 }
@@ -257,12 +258,13 @@ header a, nav a{
     margin: 0 15% 6%;
     background-color: #ffffff;
     border-radius: 10px;
-    padding: 15px;
+    padding: 0px 15px;;
     margin-top: 10px;
     border: rgba(109, 132, 59, 0.3) 2px solid;
     text-align: left;
     margin-bottom: 0%; 
 }
+
 @keyframes shrink {
     from {
         width: 450px;
@@ -273,7 +275,7 @@ header a, nav a{
 }
 
 #products img.shrink {
-    animation: shrink 0.5s ease forwards;
+    animation: shrink 0.6s ease forwards;
 }
 .product-description {
     display: none;
@@ -430,8 +432,10 @@ footer .social-icons{
     border: #6D843B 2px solid;  
     color: #6D843B; 
     padding: 10px 20px; 
-    border-radius: 10px; 
-  }
+    border-radius: 10px;
+    font-family: cursive; 
+}
+
 .copyright {
     font-size: 0.8rem; 
     text-align: center; 
@@ -463,7 +467,7 @@ footer .social-icons{
         height: 400px;
     }
     #heroImg h2{
-        padding-top: 140px;
+        padding-top: 145px;
         font-size: 3rem;
     }
     /* section Products */
