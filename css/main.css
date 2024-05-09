@@ -433,7 +433,7 @@ footer .social-icons{
     color: #6D843B; 
     padding: 10px 20px; 
     border-radius: 10px;
-    font-family: cursive; 
+    /* font-family: cursive;  */
 }
 
 .copyright {
@@ -467,7 +467,7 @@ footer .social-icons{
         height: 400px;
     }
     #heroImg h2{
-        padding-top: 145px;
+        padding-top: 150px;
         font-size: 3rem;
     }
     /* section Products */
@@ -491,7 +491,7 @@ footer .social-icons{
     #products ul {
         display: flex;
         overflow-x: hidden;
-        will-change: transform;
+        justify-content: center;
         /* position: relative; */
     }
     

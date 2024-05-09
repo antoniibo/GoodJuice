@@ -1,1 +1,1 @@
-just follow the link to try website online: https://archiprojecttest.000webhostapp.com/
+The website was created to practice my own skills in coding and designing. The design and idea of the website were created only via my imagination, so I would really appreciate your thoughts about its advantages and disadvantages, so I can use your feedback in future projects.

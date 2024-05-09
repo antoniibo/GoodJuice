@@ -94,6 +94,8 @@ function translatePage(language, translationData) {
       console.error(`Language '${language}' not found in translation data`);
   }
 }
+
+
 //Juices toogle
 
 //Toggle jucies mobile
@@ -104,7 +106,6 @@ function setupMobile() {
   let startX;
 
   function updateCarousel() {
-
       const fragment = document.createDocumentFragment();
       let leftIndex = (currentIndex - 1 + items.length) % items.length;
       let rightIndex = (currentIndex + 1) % items.length;
@@ -201,37 +202,30 @@ function setupDesktop() {
   images[currentIndex].classList.add('active');
 }
 
-// tracker of the center of the carousel
-function centerCarousel() {
-  const carousel = document.getElementById('carousel');
-  const items = carousel.querySelectorAll('li');
-  const carouselRect = carousel.getBoundingClientRect();
-  const itemRect = items[0].getBoundingClientRect();
-  const carouselWidth = carouselRect.width;
-  const itemWidth = itemRect.width;
-  const scrollPosition = (items.length * itemWidth - carouselWidth) / 2;
-  carousel.scrollLeft = scrollPosition + itemWidth / 4;
-}
+// checking the screen with and swooping functions
+function setup() {
+  const mediaQuery = window.matchMedia('(max-width: 950px)');
+  let isMobileView = mediaQuery.matches;
 
-let isMobileView = window.innerWidth < 950;
-
-function checkScreenWidth() {
-    const mediaQuery = window.matchMedia('(max-width: 950px)');
-    const currentView = window.innerWidth < 950;
-
-    if (mediaQuery.matches) {
-        setupMobile();
-        centerCarousel();
-    } else {
-        setupDesktop();
-    }
-    if (isMobileView !== currentView) {
-      location.reload();
+  function checkScreenWidth() {
+      const currentViewIsMobile = mediaQuery.matches;
+      if (currentViewIsMobile) {
+          setupMobile();
+      } else {
+          setupDesktop();
+      }
+      if (isMobileView !== currentViewIsMobile) {
+          window.location.reload();
+          return; 
+      }
+      isMobileView = currentViewIsMobile;
   }
+  mediaQuery.addListener(checkScreenWidth);
+
+  checkScreenWidth();
 }
 
-window.addEventListener('resize', checkScreenWidth);
-document.addEventListener('DOMContentLoaded', checkScreenWidth);
+document.addEventListener('DOMContentLoaded', setup);
 
 // page listener
 // document.addEventListener('click', function(event) {
