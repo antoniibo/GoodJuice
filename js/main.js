@@ -102,16 +102,16 @@ function translatePage(language, translationData) {
 function setupMobile() {
   const carousel = document.getElementById('carousel');
   const items = Array.from(carousel.children);
-  let currentIndex = 1;
+  let mobileIndex = 1;
   let startX;
 
   function updateCarousel() {
       const fragment = document.createDocumentFragment();
-      let leftIndex = (currentIndex - 1 + items.length) % items.length;
-      let rightIndex = (currentIndex + 1) % items.length;
+      let leftIndex = (mobileIndex - 1 + items.length) % items.length;
+      let rightIndex = (mobileIndex + 1) % items.length;
 
       fragment.appendChild(items[leftIndex]);
-      fragment.appendChild(items[currentIndex]);
+      fragment.appendChild(items[mobileIndex]);
       fragment.appendChild(items[rightIndex]);
 
 
@@ -126,12 +126,12 @@ function setupMobile() {
           }
       });
 
-      items[currentIndex].classList.add('active');
+      items[mobileIndex].classList.add('active');
       const descriptions = document.querySelectorAll('.product-description');
       descriptions.forEach((description) => description.style.display = 'none');
-      descriptions[currentIndex].style.display = 'block';
-      descriptions[currentIndex].classList.add('swoop-in');
-      const activeItem = items[currentIndex];
+      descriptions[mobileIndex].style.display = 'block';
+      descriptions[mobileIndex].classList.add('swoop-in');
+      const activeItem = items[mobileIndex];
       const activeImage = activeItem.querySelector('img');
       if (activeImage) {
           activeImage.classList.add('active');
@@ -145,22 +145,22 @@ function setupMobile() {
   carousel.addEventListener('touchend', (e) => {
       const endX = e.changedTouches[0].clientX;
       if (startX - endX > 50) {
-          currentIndex = (currentIndex + 1) % items.length;
+          mobileIndex = (mobileIndex + 1) % items.length;
           updateCarousel();
       } else if (endX - startX > 50) {
-          currentIndex = (currentIndex - 1 + items.length) % items.length;
+          mobileIndex = (mobileIndex - 1 + items.length) % items.length;
           updateCarousel();
       }
   });
 
   updateCarousel();
   document.getElementById('prevBtn').addEventListener('click', function() {
-    currentIndex = (currentIndex - 1 + items.length) % items.length;
+    mobileIndex = (mobileIndex - 1 + items.length) % items.length;
     updateCarousel();
   });
 
   document.getElementById('nextBtn').addEventListener('click', function() {
-    currentIndex = (currentIndex + 1) % items.length;
+    mobileIndex = (mobileIndex + 1) % items.length;
     updateCarousel();
   });
 }
